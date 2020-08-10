@@ -1,22 +1,23 @@
 package spring_app.app;
 
+import java.util.ArrayList;
+
 public class MusicPlayer
 {
 	private String name;
 	private int volume;
-	private IMusic music;
-	
-	public MusicPlayer(IMusic music)
+	private ArrayList<IMusic> musicList;
+	public MusicPlayer(ArrayList<IMusic> musicList)
 	{
-		this.music = music;
+		this.musicList = musicList;
 	}
-	public MusicPlayer()
-	{
-		
-	}
+
 	public void playMusic()
 	{
-		System.out.println(music.getSong());
+		for(IMusic iMusic : musicList)
+		{
+			System.out.println(iMusic.getSong());
+		}
 	}
 	public String getName() {
 		return name;
@@ -30,11 +31,9 @@ public class MusicPlayer
 	public void setVolume(int volume) {
 		this.volume = volume;
 	}
-	public IMusic getMusic() {
-		return music;
-	}
-	public void setMusic(IMusic music) {
-		this.music = music;
+	public void setmusicList( ArrayList<IMusic> musicList)
+	{
+		this.musicList = musicList;
 	}
 	
 }
