@@ -8,38 +8,6 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<context:property-placeholder location = "classpath:player.properties"/>
-<bean
-	id = "rapMusicBean"
-	class = "spring_app.app.RapMusic"
-	scope="singleton"/>
-
-<bean
-	id = "rockMusicBean"
-	class = "spring_app.app.RockMusic"/>
-
-<bean
-	id = "classicMusicBean"
-	class = "spring_app.app.ClassicMusic"/>
-	
-<bean
-id = "musicPlayerBean"
-class = "spring_app.app.MusicPlayer">
-<constructor-arg>
-<list>
-<ref bean="rapMusicBean"/>
-<ref bean="rockMusicBean"/>
-<ref bean="classicMusicBean"/>
-</list>
-</constructor-arg>
-
-<property name="musicList">
-<list>
-<ref bean="rapMusicBean"/>
-<ref bean="rockMusicBean"/>
-<ref bean="classicMusicBean"/>
-</list></property>
-<property name="name" value="${musicPlayer.name}"/>
-<property name="volume" value="${musicVolume.volume}"/>
-</bean>
+	<context:component-scan base-package = "spring_app.app"/>
 
 </beans>
