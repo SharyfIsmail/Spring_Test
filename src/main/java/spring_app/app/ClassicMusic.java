@@ -5,7 +5,7 @@ import javax.annotation.PreDestroy;
 
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class ClassicMusic implements IMusic
 {
 	@PostConstruct

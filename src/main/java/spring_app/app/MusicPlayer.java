@@ -1,23 +1,25 @@
 package spring_app.app;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-@Component
 public class MusicPlayer
 {
-	@Value("${musicPlayer.name}")
 	private String name;
-	@Value("${musicVolume.volume}")
 	private int volume;
 	
 	@Autowired
-	@Qualifier("classicMusic")
-	private IMusic iMusic;
+	//@Qualifier("setMuiscList")
+	private List<IMusic> musicList;
+
+	
 	public MusicPlayer()
 	{
 		
@@ -25,10 +27,10 @@ public class MusicPlayer
 
 	public void playMusic()
 	{
-		//for(IMusic iMusic : musicList)
-		//{
+		for(IMusic iMusic : musicList)
+		{
 			System.out.println(iMusic.getSong());
-		//}
+		}
 	}
 	public String getName() {
 		return name;
@@ -43,7 +45,8 @@ public class MusicPlayer
 	public void setVolume(int volume) {
 		this.volume = volume;
 	}
-
-
-	
+	public void setMusic(List<IMusic> list)
+	{
+		this.musicList = list;
+	}
 }
